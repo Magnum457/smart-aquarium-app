@@ -10,13 +10,13 @@ const theme = {
   },
 };
 
-export default class BLANK_VIEW  extends React.Component {
+export default class Actions extends React.Component {
 
   render(){
     return (
       <PaperProvider theme={theme} >
         <View style={styles.container}>
-          <Text>BLANK_VIEW</Text>
+          <Text>Ações e Rotinas</Text>
         </View>  
       </PaperProvider>  
     );

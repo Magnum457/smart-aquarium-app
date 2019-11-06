@@ -1,37 +1,63 @@
 import * as React from 'react';
-import { BottomNavigation, Text } from 'react-native-paper';
+import color from 'color';
+import { DefaultTheme, BottomNavigation, Text, Provider as PaperProvider } from 'react-native-paper';
 
-const MusicRoute = () => <Text>Music</Text>;
+import Config from '../Views/Config';
+import Actions from '../Views/Actions';
+import Dashboard from '../Views/Dashboard';
 
-const AlbumsRoute = () => <Text>Albums</Text>;
 
-const RecentsRoute = () => <Text>Recents</Text>;
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#E77902',
+    activeColor: '#fff',
+    inactiveColor: color('#fff')
+      .alpha(0.8)
+      .rgb()
+      .string(),
+  },
+};
+
+const ConfigRoute = () => <Config/>;
+
+const ActionsRoute = () => <Actions/>;
+
+const DashboardRoute = () => <Dashboard/>;
+
+
 
 export default class Navegacao extends React.Component {
   state = {
-    index: 0,
+    index: 1,
     routes: [
-      { key: 'music', title: 'Music', icon: 'camera' },
-      { key: 'albums', title: 'Albums', icon: 'camera' },
-      { key: 'recents', title: 'Recents', icon: 'camera' },
+      { key: 'config', title: 'Configurações', icon: 'cogs', color: theme.primary },
+      { key: 'actions', title: 'Ações e Rotinas', icon: 'fish', color: theme.primary },
+      { key: 'dashboard', title: 'Dashboard', icon: 'bar-graph', color: theme.primary },
     ],
+    
   };
 
   _handleIndexChange = index => this.setState({ index });
 
   _renderScene = BottomNavigation.SceneMap({
-    music: MusicRoute,
-    albums: AlbumsRoute,
-    recents: RecentsRoute,
+    config: ConfigRoute,
+    actions: ActionsRoute,
+    dashboard: DashboardRoute,
   });
 
   render() {
     return (
-      <BottomNavigation
-        navigationState={this.state}
-        onIndexChange={this._handleIndexChange}
-        renderScene={this._renderScene}
-      />
+
+          <BottomNavigation
+            activeColor={theme.activeColor} 
+            inactiveColor={theme.inactiveColor}
+            navigationState={this.state}
+            onIndexChange={this._handleIndexChange}
+            renderScene={this._renderScene}
+          />
+      
     );
   }
 }
