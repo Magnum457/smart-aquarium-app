@@ -12,10 +12,6 @@ const theme = {
   },
 };
 
-
-
-
-
 export default class Login extends React.Component {
   state = {
     text: '',
