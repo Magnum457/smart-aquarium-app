@@ -34,7 +34,7 @@ export default class Navegacao extends React.Component {
     routes: [
       { key: 'config', title: 'Configurações', icon: 'cogs', color: theme.primary },
       { key: 'actions', title: 'Ações e Rotinas', icon: 'fish', color: theme.primary },
-      { key: 'dashboard', title: 'Dashboard', icon: 'bar-graph', color: theme.primary },
+      { key: 'dashboard', title: 'Dashboard', icon: 'chart-bell-curve', color: theme.primary },
     ],
     
   };
@@ -46,6 +46,9 @@ export default class Navegacao extends React.Component {
     actions: ActionsRoute,
     dashboard: DashboardRoute,
   });
+
+
+ 
 
   render() {
     return (

@@ -19,7 +19,7 @@ export default class Header extends React.Component {
   render() {
     return (
     <PaperProvider theme={theme} >
-      <Appbar.Header>
+      <Appbar.Header >
         <Appbar.Action icon="menu"
           onPress={this._openMenu}
         />
