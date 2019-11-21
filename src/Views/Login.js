@@ -14,8 +14,17 @@ const theme = {
 export default class Login extends React.Component {
   state = {
     text: '',
-    password: ''
+    password: '',
+    erroMessage: ''
   };
+
+  Login = () => {
+    if (this.state.text == "user" && this.state.password == "senha") {
+      this.props.navigation.navigate('Inicio')
+    } else {
+      this.setState({erroMessage: "Login Errado"})
+    }
+  }
 
   render(){
     return (
@@ -48,9 +57,11 @@ export default class Login extends React.Component {
             <Text style={styles.textlink}>Esqueci minha senha</Text>
             <Text style={styles.textlink}>Não tem cadastro? Clique aqui!</Text>
 
-            <Button style={{ marginTop: 20 }} icon="login" mode="contained" onPress={() => console.log('Pressed')}>
+            <Button style={{ marginTop: 20 }} icon="login" mode="contained" onPress={() => this.Login()}>
               entrar
             </Button>
+
+            { this.state.erroMessage.length !== 0 && (<Text style={styles.errormessage}> { this.state.erroMessage } </Text>) }
 
             <Text style={{ marginTop: 30, textAlign: 'center', fontSize: 10 }}>Smart Aquarium™ 2019</Text>
           
@@ -77,6 +88,11 @@ const styles = StyleSheet.create({
   textlink:{
     marginTop: 10,
     fontSize: 12,
+  },
+  errormessage:{
+    fontSize: 14,
+    color: '#780312',
+    alignSelf: 'stretch'
   },
 });
 

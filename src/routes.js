@@ -8,7 +8,7 @@ import Apres from './Views/Apres'
 const Routes = createAppContainer(
     createSwitchNavigator({
         //Login,
-        //Inicio,
+        Inicio,
         //Test,
         Apres
     })
